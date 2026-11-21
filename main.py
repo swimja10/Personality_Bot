@@ -7,6 +7,10 @@ from call_function import available_functions, call_function
 from config import MAX_ITERS, MODEL
 from soul import soul
 
+from prompt_toolkit import PromptSession
+
+session = PromptSession()
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Personality Bot")
@@ -19,7 +23,7 @@ def main() -> None:
 
     while True:
         try:
-            user_input = input("\nYou: ").strip()
+            user_input = session.prompt("\nYou: ", multiline=True).strip()
         except (EOFError, KeyboardInterrupt):
             print()
             break
